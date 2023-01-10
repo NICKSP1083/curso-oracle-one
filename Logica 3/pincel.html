@@ -1,0 +1,99 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+    var pantalla = document.querySelector('canvas');
+    var pincel = pantalla.getContext('2d');
+
+    pincel.fillStyle = 'grey';
+    pincel.fillRect(0, 0, 600, 400);
+    pincel.fillStyle = 'red';
+    pincel.fillRect(0, 0, 50, 50);
+    pincel.fillStyle = 'green';
+    pincel.fillRect(50, 0, 50, 50);
+    pincel.fillStyle = 'blue';
+    pincel.fillRect(100, 0, 50, 50);
+
+
+    var puedoDibujar = false;
+    var color = "blue";
+
+    function dibujarCirculo(x,y) {
+
+        if(puedoDibujar) {
+
+            pincel.fillStyle = color;
+            pincel.beginPath();
+            pincel.arc(x, y, 5, 0, 2 * 3.14);
+            pincel.fill();
+        }
+
+    }
+
+    function habilitarDibujar() {
+            
+        puedoDibujar = true;
+
+    }
+
+    function deshabilitarDibujar() {
+
+        puedoDibujar = false;
+    }
+
+    function areaPermitida(Cx,Cy){
+
+        if ((Cx >= 0 && Cx < (155)) && 
+            (Cy >=0 && Cy < (55))) {
+
+            return false;
+
+        } else{
+
+            return true;
+
+        }
+    }
+
+    function movMouse(evento){
+
+        var x = evento.pageX - pantalla.offsetLeft;
+        var y = evento.pageY - pantalla.offsetTop;
+
+        if (areaPermitida(x,y)){
+
+                dibujarCirculo(x,y);
+
+        }
+
+    }
+
+    function cambiarColor(evento){
+        var x = evento.pageX - pantalla.offsetLeft;
+        var y = evento.pageY - pantalla.offsetTop;
+
+        if ((x < 50) && 
+            (x > 0) &&
+            (y < 50) &&
+            (y > 0) ) {
+            color = "red";
+        }
+        else if((x < 100) &&
+                (x > 50) &&
+                (y < 50) &&
+                (y > 0)){
+            color = "green";
+        }
+        else if((x < 200) &&
+                (x > 100) &&
+                (y < 50) &&
+                (y > 0)){
+            color = "blue";
+        }
+    }
+
+    pantalla.onmousedown = habilitarDibujar;
+    pantalla.onclick = cambiarColor
+    pantalla.onmouseup = deshabilitarDibujar;
+    pantalla.onmousemove = movMouse;
+
+</script>
