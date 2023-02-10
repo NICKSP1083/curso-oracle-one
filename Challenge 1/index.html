@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Encriptador de Texto - NMO</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <p class="titulo">Encriptador de texto - NMO</p>
+        </header>
+        <main>
+            <div class="bloque">
+                <textarea class="text-box" id="OriginalTxt" cols="60" rows="21" placeholder="Ingrese aqui el texto a encriptar o desencriptar"></textarea>
+                <div class="b-botones">
+                    <button id="encriptar" class="botones" onclick="encriptar()">Encriptar</button>
+                    <button id="desencriptar" class="botones" onclick="desencriptar()">Desencriptar</button>
+                </div>
+            </div>
+            <div class="figura">
+                <img class="icono" src="pics/intercambiar.png" alt="icono de intercambio">
+            </div>
+            <div class="bloque">
+                <textarea class="text-box" id="ModifiedTxt" cols="60" rows="21" placeholder="Aqui aparecera el texto desencriptado o desencriptado"></textarea>
+                <div class="b-botones">
+                    <button id="copiar" class="botones">Copiar Texto</button>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p class="pie">Pagina desarollada por Nicolas Murcia Orjuela - 2023</p>
+        </footer>
+        <script src="controlador.js"></script>
+    </body>
+</html>
